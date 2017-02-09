@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'annotate'
 gem 'db-query-matchers'
 gem 'capybara'
 gem 'rspec'
