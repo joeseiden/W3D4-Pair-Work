@@ -1,4 +1,4 @@
-class Response
+class Response < ActiveRecord::Base
   validates :answer_id, :user_id, presence: true
 
   belongs_to :answer_choice,
