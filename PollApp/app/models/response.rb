@@ -11,4 +11,21 @@ class Response < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+  has_one :question,
+    through: :answer_choice,
+    source: :question
+
+  def not_duplicate_response
+  end
+
+  def respondent_already_answered?
+    if sibling_responses.exists?(user_id: self.user_id)
+      errors[:user_id] << "cannot vote twice for question"
+    end
+  end
+
+  def sibling_responses
+    question.responses.where.not(id: self.id)
+  end
+
 end

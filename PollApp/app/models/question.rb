@@ -10,4 +10,8 @@ class Question < ActiveRecord::Base
     class_name: :Poll,
     primary_key: :id,
     foreign_key: :poll_id
+
+  has_many :responses,
+    through: :answer_choices,
+    source: :responses
 end
